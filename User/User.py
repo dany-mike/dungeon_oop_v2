@@ -29,6 +29,8 @@ class User(Png):
                 # Make reward into my inventory
                 self.inventory["map"] = main_entrance.reward
                 print(f"{self.inventory['map']} added in your inventary !")
+                print("")
+                main_entrance.choose_direction()
                 break
             if choice == 'no':
                 print("Game over")
