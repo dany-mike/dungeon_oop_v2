@@ -21,16 +21,6 @@ class User(Png):
         while True:
             choice = input("Do you want to go in the dungeon ? ('yes' 'no'): ")
             if choice == 'yes':
-                # Call the instance MainEntrance
-                main_entrance = MainEntrance("dungeon main entrance", "dungeon map")
-                print(f"{self.name} enters in the {main_entrance.room_name}")
-                # User find a treasure
-                main_entrance.main_entrance_reward()
-                # Make reward into my inventory
-                self.inventory["map"] = main_entrance.reward
-                print(f"{self.inventory['map']} added in your inventary !")
-                print("")
-                main_entrance.choose_direction()
                 break
             if choice == 'no':
                 print("Game over")
@@ -43,5 +33,3 @@ class User(Png):
 
     def block_attack(self):
         pass
-
-

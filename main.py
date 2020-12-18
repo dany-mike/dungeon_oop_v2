@@ -1,10 +1,17 @@
 from User.User import User
+from Rooms.MainEntrance import MainEntrance
 
 while True:
     def main():
         print("Welcome in the dungeon game !")
-        user = User("Link", 100)
-        user.go_in_dungeon()
+        # Choose username
+        character_name = input("Choose a character name: ")
+        print("")
+        # Call user instance
+        user = User(character_name, 100)
+        # Call main entrance instance
+        main_entrance = MainEntrance("Main entrance", "dungeon map", user)
+        main_entrance.v_main_entrance()
 
     if __name__ == '__main__':
         main()
