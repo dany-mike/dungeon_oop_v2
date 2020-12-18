@@ -25,12 +25,4 @@ class MainEntrance(Room):
 
     def choose_direction(self):
         print(f"You are at the {self.room_name}.")
-        direction = input("In which room you want to go ?: 'FR' 'EM' 'TR' 'EXIT' ")
-        if direction == 'FR':
-            print("Time to fight")
-        if direction == 'EM':
-            print("Room is empty")
-        if direction == 'TR':
-            print("Trap in the room !")
-        if direction == 'EXIT':
-            input("Do you really want to exit the dungeon ? 'y' 'n' ")
+        input("In which room you want to go ?: 'FR' 'EM' 'TR'")
