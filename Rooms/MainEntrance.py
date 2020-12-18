@@ -6,6 +6,9 @@ class MainEntrance(Room):
         super().__init__(room_name)
         self.reward = reward
         self.user = user
+        self.right_dir = 'TR'
+        self.straight_dir = 'FR'
+        self.left_dir = 'EM'
 
     def main_entrance_reward(self):
         print(f"Lucky day! you already find a treasure, its a {self.reward}")
@@ -13,7 +16,6 @@ class MainEntrance(Room):
         print("")
 
     def v_main_entrance(self):
-        # Call the instance MainEntrance
         print(f"{self.user.name} enters in the {self.room_name}")
         # User find a treasure
         self.main_entrance_reward()
@@ -21,9 +23,7 @@ class MainEntrance(Room):
         self.user.inventory["map"] = self.reward
         print(f"{self.user.inventory['map']} added in your inventary !")
         print("")
-        return self.choose_direction()
+        print(f"You are at the {self.room_name}.")
 
     def choose_direction(self):
-        while True:
-            print(f"You are at the {self.room_name}.")
-            return input("In which room you want to go ?: 'FR' 'EM' 'TR'")
+        return input(f"In which room you want to go ?: '{self.straight_dir}' '{self.left_dir}' '{self.right_dir}'")

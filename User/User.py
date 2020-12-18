@@ -16,20 +16,11 @@ class User(Png):
             "hylian_shield_pv": 100,
         }
 
-    # Enter in the dungeon
-    def go_in_dungeon(self):
-        while True:
-            choice = input("Do you want to go in the dungeon ? ('yes' 'no'): ")
-            if choice == 'yes':
-                break
-            if choice == 'no':
-                print("Game over")
-                break
-            else:
-                print("Choose an existing choice")
-
     def attack(self):
         pass
 
     def block_attack(self):
+        pass
+
+    def take_potion(self):
         pass
