@@ -19,8 +19,13 @@ class User(Png):
     def attack(self):
         pass
 
-    def block_attack(self):
-        pass
+    def block_attack(self, attack):
+        print(f"{self.name} uses his {self.inventory['hylian_shield_name']} !")
+        # Mid of the attack on the shield
+        self.inventory['hylian_shield_pv'] - (attack / 2)
+        self.pv - (attack / 2)
+        print(f"{self.inventory['hylian_shield_name']} has {self.inventory['hylian_shield_pv']} PV !")
+        print(f"{self.name} has {self.pv} PV !")
 
     def take_potion(self):
         pass

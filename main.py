@@ -33,6 +33,7 @@ while True:
                 if direction == "TR":
                     trap_room = TrapRoom("Trap Room", user, 60)
                     trap_room.v_trap_room()
+                    print(user.pv)
 
                     break
         else:

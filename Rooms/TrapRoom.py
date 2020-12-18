@@ -15,7 +15,6 @@ class TrapRoom(Room):
             use_shield = input(f"Do you want to use your {self.user.inventory['hylian_shield_name']} ?: "
                                f"'yes' 'no' ")
             if use_shield == 'yes':
-                print(f"{self.user.name} uses his {self.user.inventory['hylian_shield_name']} !")
                 # calculte User dommage
                 protected_by_trap = (self.arrow_attack / 2)
                 self.user.pv -= protected_by_trap
