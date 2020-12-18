@@ -24,5 +24,6 @@ class MainEntrance(Room):
         return self.choose_direction()
 
     def choose_direction(self):
-        print(f"You are at the {self.room_name}.")
-        input("In which room you want to go ?: 'FR' 'EM' 'TR'")
+        while True:
+            print(f"You are at the {self.room_name}.")
+            return input("In which room you want to go ?: 'FR' 'EM' 'TR'")
