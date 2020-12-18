@@ -32,7 +32,7 @@ while True:
                 # Trap Room instance
                 if direction == "TR":
                     trap_room = TrapRoom("Trap Room", user, 60)
-                    print("You are in the trap room")
+                    trap_room.v_trap_room()
 
                     break
         else:
