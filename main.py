@@ -23,19 +23,24 @@ while True:
             while True:
                 direction = main_entrance.choose_direction()
                 if direction == 'FR':
+                    if user.pv <= 0:
+                        print("Game over")
+                        break
                     print("You are in the fight room")
-                    break
                 # Empty Room Instance
                 if direction == 'EM':
+                    if user.pv <= 0:
+                        print("Game over")
+                        break
                     print("You are in the empty room")
-                    break
                 # Trap Room instance
                 if direction == "TR":
+
                     trap_room = TrapRoom("Trap Room", user, 60)
                     trap_room.v_trap_room()
-                    print(user.pv)
-
-                    break
+                    if user.pv <= 0:
+                        print("Game over")
+                        break
         else:
             print("Game over")
 
