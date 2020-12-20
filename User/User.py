@@ -16,22 +16,5 @@ class User(Png):
             "hylian_shield_pv": 100,
         }
 
-    def attack(self, enemy):
-        attack_choice = input("What do you want to do ? 'sword_attack' 'block_shield' ('magic_attack' -10PV )")
-        if attack_choice == 'sword_attack':
-            print()
-        if attack_choice == 'block_shield':
-            print()
-        if attack_choice == 'magic_attack':
-            print()
-
-    def block_attack(self, attack):
-        print(f"{self.name} uses his {self.inventory['hylian_shield_name']} !")
-        # Mid of the attack on the shield
-        self.inventory['hylian_shield_pv'] - (attack / 2)
-        self.pv - (attack / 2)
-        print(f"{self.inventory['hylian_shield_name']} has {self.inventory['hylian_shield_pv']} PV !")
-        print(f"{self.name} has {self.pv} PV !")
-
     def take_potion(self):
         pass

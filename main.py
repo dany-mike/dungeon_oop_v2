@@ -3,6 +3,7 @@ from Rooms.MainEntrance import MainEntrance
 from Rooms.TrapRoom import TrapRoom
 from Rooms.FightRoom import FightRoom
 from Rooms.EmptyRoom import EmptyRoom
+from Enemies.Goblin import Goblin
 
 
 while True:
@@ -22,12 +23,13 @@ while True:
             # Call TrapRoom instance
             trap_room = TrapRoom("Trap Room", user, 60)
             # Fight Room instance
+            fight_room = FightRoom("Fight Room", user)
             main_entrance.v_main_entrance()
             while True:
                 direction = main_entrance.choose_direction()
+                print("")
                 if direction == 'FR':
-                    # Fight Room instance
-                    print("You are in the fight room")
+                    fight_room.v_fight_room(Goblin("Goblin", 50))
                     if user.pv <= 0:
                         print("Game over")
                         break
@@ -39,9 +41,7 @@ while True:
                         break
                 if direction == "TR":
                     # Trap Room instance
-                    print(trap_room.is_trap_desactivate)
                     trap_room.v_trap_room()
-                    print(trap_room.is_trap_desactivate)
                     if user.pv <= 0:
                         print("Game over")
                         break
