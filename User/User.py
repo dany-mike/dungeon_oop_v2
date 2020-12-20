@@ -16,8 +16,14 @@ class User(Png):
             "hylian_shield_pv": 100,
         }
 
-    def attack(self):
-        pass
+    def attack(self, enemy):
+        attack_choice = input("What do you want to do ? 'sword_attack' 'block_shield' ('magic_attack' -10PV )")
+        if attack_choice == 'sword_attack':
+            print()
+        if attack_choice == 'block_shield':
+            print()
+        if attack_choice == 'magic_attack':
+            print()
 
     def block_attack(self, attack):
         print(f"{self.name} uses his {self.inventory['hylian_shield_name']} !")

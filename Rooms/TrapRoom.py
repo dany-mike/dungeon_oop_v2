@@ -38,4 +38,10 @@ class TrapRoom(Room):
 
     def v_trap_room(self):
         print(f"{self.user.name} enters in the {self.room_name}")
-        self.trap_attack()
+        if not self.is_trap_desactivate:
+            self.trap_attack()
+        if self.is_trap_desactivate:
+            self.find_door()
+
+    def find_door(self):
+        print(f"{self.user.name} goes at the door in the back of the room")
