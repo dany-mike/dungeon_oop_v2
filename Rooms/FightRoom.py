@@ -25,30 +25,25 @@ class FightRoom(Room):
                 print(f"{goblin.name} has {goblin.pv} You have {self.user.pv} PV !")
                 # User attacks Goblin
                 self.user.attack(goblin)
-                # If Goblin has no PV
+                # If Goblin has 0 or less end (Do the same for user later)
                 if goblin.pv <= 0:
-                    print("")
-                    print(f"{self.user.name} wins the fight !")
-                    self.is_gobelin = False
-                    # Key reward
-                    print("")
-                    print("Congrats you win a key !")
-                    # Add key into the inventory
-                    self.user.inventory["key"] = self.reward
-                    print("")
+                    self.end_fight()
                     break
                 # Goblin attacks User
                 self.goblin.attack(self.user)
+                # If Goblin has 0 or less end (Do the same for user later)
                 if goblin.pv <= 0:
-                    print("")
-                    print(f"{self.user.name} wins the fight !")
-                    self.is_gobelin = False
-                    # Key reward
-                    print("")
-                    print("Congrats you win a key")
-                    # Add key into the inventory
-                    print("")
+                    self.end_fight()
                     break
         else:
             print("There is nothing to do in this room...")
 
+    def end_fight(self):
+        print("")
+        print(f"{self.user.name} wins the fight !")
+        self.is_gobelin = False
+        # Key reward
+        print("")
+        print("Congrats you win a key")
+        # Add key into the inventory
+        print("")

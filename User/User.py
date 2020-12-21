@@ -18,21 +18,25 @@ class User(Png):
         }
 
     def attack(self, enemy):
-        print("")
-        attack_choice = input("What do you want to do ? 'sword_attack' 'magic_attack' (-10PV): "
-                              "")
-        if attack_choice == 'sword_attack':
+        while True:
             print("")
-            print(f"{self.name} uses the Sword Attack !")
-            enemy.pv -= self.inventory['sword_attack']
-            print(f"{enemy.name} looses {self.inventory['sword_attack']} PV !")
-        if attack_choice == 'magic_attack':
-            print(f"{self.name} uses the Magic Attack !")
-            enemy.pv -= self.inventory['magic_attack']
-            print(f"{enemy.name} loose {self.inventory['magic_attack']} PV !")
-            self.pv -= 10
-            print(f"But {self.name} looses 10 PV")
-
+            attack_choice = input("What do you want to do ? 'sword_attack' 'magic_attack' (-10PV): "
+                                  "")
+            if attack_choice == 'sword_attack':
+                print("")
+                print(f"{self.name} uses the Sword Attack !")
+                enemy.pv -= self.inventory['sword_attack']
+                print(f"{enemy.name} looses {self.inventory['sword_attack']} PV !")
+                break
+            if attack_choice == 'magic_attack':
+                print(f"{self.name} uses the Magic Attack !")
+                enemy.pv -= self.inventory['magic_attack']
+                print(f"{enemy.name} loose {self.inventory['magic_attack']} PV !")
+                self.pv -= 10
+                print(f"But {self.name} looses 10 PV")
+                break
+            else:
+                print("Choose an existing choice.")
 
     def take_potion(self):
         pass
