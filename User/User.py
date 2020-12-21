@@ -1,6 +1,6 @@
 from Png.Png import Png
 from Rooms.MainEntrance import MainEntrance
-
+from Enemies.Goblin import Goblin
 
 class User(Png):
     def __init__(self, name, pv):
@@ -16,6 +16,21 @@ class User(Png):
             "hylian_shield_name": "Hylian Shield",
             "hylian_shield_pv": 100,
         }
+
+    def attack(self, enemy):
+        attack_choice = input("What do you want to do ? 'sword_attack' 'magic_attack' (-10PV): "
+                              "")
+        if attack_choice == 'sword_attack':
+            print(f"{self.name} uses the Sword Attack !")
+            enemy.pv -= self.inventory['sword_attack']
+            print(f"{enemy.name} looses {self.inventory['sword_attack']} PV !")
+        if attack_choice == 'magic_attack':
+            print(f"{self.name} uses the Magic Attack !")
+            enemy.pv -= self.inventory['magic_attack']
+            print(f"{enemy.name} loose {self.inventory['magic_attack']} PV !")
+            self.pv -= 10
+            print(f"But {self.name} looses 10 PV")
+
 
     def take_potion(self):
         pass
