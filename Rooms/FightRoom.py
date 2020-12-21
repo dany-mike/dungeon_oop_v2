@@ -5,10 +5,11 @@ from Enemies.Goblin import Goblin
 class FightRoom(Room):
     goblin = Goblin("Goblin", 50)
 
-    def __init__(self, room_name, user):
+    def __init__(self, room_name, user, reward):
         super().__init__(room_name)
         self.user = user
         self.is_gobelin = True
+        self.reward = reward
 
     def v_fight_room(self, goblin):
         print(f"{self.user.name} enters in the FR room.. ")
@@ -22,15 +23,32 @@ class FightRoom(Room):
             # Fight loops
             while True:
                 print(f"{goblin.name} has {goblin.pv} You have {self.user.pv} PV !")
+                # User attacks Goblin
                 self.user.attack(goblin)
-               
+                # If Goblin has no PV
                 if goblin.pv <= 0:
+                    print("")
                     print(f"{self.user.name} wins the fight !")
                     self.is_gobelin = False
                     # Key reward
+                    print("")
+                    print("Congrats you win a key !")
+                    # Add key into the inventory
+                    self.user.inventory["key"] = self.reward
+                    print("")
+                    break
+                # Goblin attacks User
+                self.goblin.attack(self.user)
+                if goblin.pv <= 0:
+                    print("")
+                    print(f"{self.user.name} wins the fight !")
+                    self.is_gobelin = False
+                    # Key reward
+                    print("")
                     print("Congrats you win a key")
+                    # Add key into the inventory
+                    print("")
                     break
         else:
             print("There is nothing to do in this room...")
-
 

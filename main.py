@@ -23,7 +23,7 @@ while True:
             # Call TrapRoom instance
             trap_room = TrapRoom("Trap Room", user, 60)
             # Fight Room instance
-            fight_room = FightRoom("Fight Room", user)
+            fight_room = FightRoom("Fight Room", user, "key")
             main_entrance.v_main_entrance()
             while True:
                 direction = main_entrance.choose_direction()

@@ -18,9 +18,11 @@ class User(Png):
         }
 
     def attack(self, enemy):
+        print("")
         attack_choice = input("What do you want to do ? 'sword_attack' 'magic_attack' (-10PV): "
                               "")
         if attack_choice == 'sword_attack':
+            print("")
             print(f"{self.name} uses the Sword Attack !")
             enemy.pv -= self.inventory['sword_attack']
             print(f"{enemy.name} looses {self.inventory['sword_attack']} PV !")
