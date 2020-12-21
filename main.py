@@ -21,7 +21,7 @@ while True:
             # Call main entrance instance
             main_entrance = MainEntrance("Main entrance", "dungeon map", user)
             # Call TrapRoom instance
-            trap_room = TrapRoom("Trap Room", user, 60)
+            trap_room = TrapRoom("Trap Room", user)
             # Fight Room instance
             fight_room = FightRoom("Fight Room", user, "key")
             main_entrance.v_main_entrance()

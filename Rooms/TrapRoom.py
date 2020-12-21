@@ -2,12 +2,12 @@ from Rooms.Room import Room
 
 
 class TrapRoom(Room):
-    def __init__(self, room_name, user, arrow_attack):
+    def __init__(self, room_name, user):
         super().__init__(room_name)
         self.is_mini_boss_room_open = False
         self.is_trap_desactivate = False
         self.user = user
-        self.arrow_attack = arrow_attack
+        self.arrow_attack = 60
 
     def trap_attack(self):
         print(f'No! there is a trap!!! {self.user.name} is attacked by arrows')
@@ -15,18 +15,12 @@ class TrapRoom(Room):
             use_shield = input(f"Do you want to use your {self.user.inventory['hylian_shield_name']} ?: "
                                f"'yes' 'no' ")
             if use_shield == 'yes':
-                # calculte User dommage
-                protected_by_trap = (self.arrow_attack / 2)
-                self.user.pv -= protected_by_trap
-                print(f"{self.user.name} looses {protected_by_trap} PV !")
-                # calculate shield dommages
-                self.user.inventory["hylian_shield_pv"] -= protected_by_trap
-                print(f"{self.user.inventory['hylian_shield_name']} looses {protected_by_trap} PV !")
-                print(f"{self.user.inventory['hylian_shield_name']} has "
-                      f"{self.user.inventory['hylian_shield_pv']} PV !")
+                # Block the trap method
+                self.user.block_trap_with_shield(self.arrow_attack)
                 break
-            # Not protect with shield
+
             if use_shield == 'no':
+                # arrow_attack without shield
                 self.user.pv -= self.arrow_attack
                 print(f"{self.user.name} looses {self.arrow_attack} PV !")
                 break
@@ -44,4 +38,5 @@ class TrapRoom(Room):
             self.find_door()
 
     def find_door(self):
+        # Check if user has a key if he has go to the Mini Boss Room.
         print(f"{self.user.name} goes at the door in the back of the room")

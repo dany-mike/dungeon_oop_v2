@@ -26,4 +26,5 @@ class MainEntrance(Room):
         print(f"You are at the {self.room_name}.")
 
     def choose_direction(self):
+        # Propose to take a potion if user has less than 100 PV
         return input(f"In which room you want to go ?: '{self.straight_dir}' '{self.left_dir}' '{self.right_dir}': ")
