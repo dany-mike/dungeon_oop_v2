@@ -11,6 +11,7 @@ class User(Png):
             "red_potion": 30,
             "sword_name": "Excalibur",
             "sword_attack": 30,
+            'magic_attack': 50,
             # if the shield is attacked by 100 he looses 50 pv
             "hylian_shield_name": "Hylian Shield",
             "hylian_shield_pv": 100,
