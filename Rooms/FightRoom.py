@@ -46,4 +46,5 @@ class FightRoom(Room):
         print("")
         print("Congrats you win a key")
         # Add key into the inventory
-        print("")
+        self.user.inventory["key"] = self.reward
+

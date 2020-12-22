@@ -39,4 +39,26 @@ class TrapRoom(Room):
 
     def find_door(self):
         # Check if user has a key if he has go to the Mini Boss Room.
-        print(f"{self.user.name} goes at the door in the back of the room")
+        is_key = "key" in self.user.inventory
+        if not is_key:
+            print(f"{self.user.name} goes at the door in the back of the room but she is closed you need a key ....")
+            print("")
+            print(f"{self.user.name} goes back at the main entrance ....")
+            print("")
+        if is_key:
+            self.open_door()
+
+    def open_door(self):
+        while True:
+            use_key = input("Do you want to use your key ? 'y' 'n' ")
+
+            if use_key == 'y':
+                print(f"{self.user.name} uses {self.user.inventory['key']}")
+                
+                break
+            if use_key == 'n':
+                print(f"{self.user.name} decides to do nothing. He goes back at the main entrance....")
+            else:
+                print("Choose an existing choice")
+
+

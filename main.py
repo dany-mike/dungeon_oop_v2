@@ -24,6 +24,8 @@ while True:
             trap_room = TrapRoom("Trap Room", user)
             # Fight Room instance
             fight_room = FightRoom("Fight Room", user, "key")
+            # Empty room instance
+            empty_room = EmptyRoom("Empty Room", user)
             main_entrance.v_main_entrance()
             while True:
                 direction = main_entrance.choose_direction()
@@ -35,6 +37,7 @@ while True:
                         break
                 if direction == 'EM':
                     # Empty Room Instance
+                    empty_room.v_empty_room()
                     print("You are in the empty room")
                     if user.pv <= 0:
                         print("Game over")

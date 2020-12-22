@@ -1,6 +1,5 @@
 from Png.Png import Png
-from Rooms.MainEntrance import MainEntrance
-from Enemies.Goblin import Goblin
+
 
 class User(Png):
     def __init__(self, name, pv):
