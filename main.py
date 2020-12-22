@@ -38,7 +38,6 @@ while True:
                 if direction == 'EM':
                     # Empty Room Instance
                     empty_room.v_empty_room()
-                    print("You are in the empty room")
                     if user.pv <= 0:
                         print("Game over")
                         break

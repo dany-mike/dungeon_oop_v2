@@ -12,7 +12,7 @@ class MiniBossRoom(Room):
         self.reward = reward
 
     def v_mini_boss_room(self, dark_user):
-        print(f"{self.user.name} enters in the FR room.. ")
+        print(f"{self.user.name} enters in the Mini Boss room.. ")
         print("")
         self.start_fight(self.user, dark_user)
 

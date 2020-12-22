@@ -39,6 +39,7 @@ class TrapRoom(Room):
         if self.is_trap_desactivate:
             self.find_door()
 
+    # Something to do for optimisation with this func (not deadend room)
     def find_door(self):
         # Check if user has a key if he has go to the Mini Boss Room.
         is_key = "key" in self.user.inventory
