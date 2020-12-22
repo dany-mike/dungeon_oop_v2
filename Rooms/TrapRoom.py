@@ -1,4 +1,6 @@
 from Rooms.Room import Room
+from Rooms.MiniBossRoom import MiniBossRoom
+from Enemies.DarkUser import DarkUser
 
 
 class TrapRoom(Room):
@@ -54,7 +56,8 @@ class TrapRoom(Room):
 
             if use_key == 'y':
                 print(f"{self.user.name} uses {self.user.inventory['key']}")
-                
+                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, True, 'boss key')
+                mini_boss_room.v_mini_boss_room(DarkUser(f"Dark {self.user.name}", self.user.pv))
                 break
             if use_key == 'n':
                 print(f"{self.user.name} decides to do nothing. He goes back at the main entrance....")

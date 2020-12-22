@@ -1,16 +1,6 @@
-from Png.Png import Png
+from Enemies.Enemy import Enemy
 
 
-class Goblin(Png):
+class Goblin(Enemy):
     def __init__(self, name, pv):
-        Png.__init__(self, name, pv)
-        self.attack_name = "Punch and Kick"
-        self.attack_domage = 30
-
-    # Make an other attack the choice will be random
-    def attack(self, user):
-        print("")
-        print(f"{self.name} uses the {self.attack_name} !")
-        user.pv -= self.attack_domage
-        print(f"{user.name} looses {self.attack_domage} PV !")
-        print("")
+        Enemy.__init__(self, name, pv, attack_name="Punch and Kick", attack_domage=30)
