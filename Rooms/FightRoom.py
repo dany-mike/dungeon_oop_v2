@@ -1,5 +1,6 @@
 from Rooms.Room import Room
 from Enemies.Goblin import Goblin
+from Rooms.Fight import Fight
 
 
 class FightRoom(Room):
@@ -14,37 +15,8 @@ class FightRoom(Room):
     def v_fight_room(self, goblin):
         print(f"{self.user.name} enters in the FR room.. ")
         print("")
-        self.start_fight(self.user, goblin)
-
-    # Start fight function or nothing if already fight
-    def start_fight(self, user, goblin):
-        if self.is_gobelin:
-            print(f"A fight between {user.name} and {goblin.name} started !")
-            # Fight loops
-            while True:
-                print(f"{goblin.name} has {goblin.pv} You have {self.user.pv} PV !")
-                # User attacks Goblin
-                self.user.attack(goblin)
-                # If Goblin has 0 or less end (Do the same for user later)
-                if goblin.pv <= 0:
-                    self.end_fight()
-                    break
-                # Goblin attacks User
-                self.goblin.attack(self.user)
-                # If Goblin has 0 or less end (Do the same for user later)
-                if goblin.pv <= 0:
-                    self.end_fight()
-                    break
-        else:
-            print("There is nothing to do in this room...")
-
-    def end_fight(self):
-        print("")
-        print(f"{self.user.name} wins the fight !")
+        # Call fight instance
+        fight = Fight()
+        # execute start_fight and end_fight method in Fight.py
+        fight.start_fight(self.user, goblin, self.is_gobelin, self.reward, "key")
         self.is_gobelin = False
-        # Key reward
-        print("")
-        print("Congrats you win a key")
-        # Add key into the inventory
-        self.user.inventory["key"] = self.reward
-

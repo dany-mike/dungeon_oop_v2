@@ -56,8 +56,9 @@ class TrapRoom(Room):
             use_key = input("Do you want to use your key ? 'y' 'n' ")
 
             if use_key == 'y':
+                # Create an enemy wich is in the same state of my user
                 print(f"{self.user.name} uses {self.user.inventory['key']}")
-                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, True, 'boss key')
+                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, 'boss key')
                 mini_boss_room.v_mini_boss_room(DarkUser(f"Dark {self.user.name}", self.user.pv))
                 break
             if use_key == 'n':
