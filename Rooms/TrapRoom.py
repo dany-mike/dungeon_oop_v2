@@ -10,6 +10,8 @@ class TrapRoom(Room):
         self.is_trap_desactivate = False
         self.user = user
         self.arrow_attack = 60
+        # boolean below into MiniBossRoom.py
+        self.is_dark_user = True
 
     def trap_attack(self):
         print(f'No! there is a trap!!! {self.user.name} is attacked by arrows')
@@ -58,7 +60,7 @@ class TrapRoom(Room):
             if use_key == 'y':
                 # Create an enemy wich is in the same state of my user
                 print(f"{self.user.name} uses {self.user.inventory['key']}")
-                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, 'boss key')
+                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, 'boss key', self.is_dark_user)
                 mini_boss_room.v_mini_boss_room(DarkUser(f"Dark {self.user.name}", self.user.pv))
                 break
             if use_key == 'n':
