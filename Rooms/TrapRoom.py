@@ -38,8 +38,10 @@ class TrapRoom(Room):
         print(f"{self.user.name} enters in the {self.room_name}")
         if not self.is_trap_desactivate:
             self.trap_attack()
-        if self.is_trap_desactivate:
+        if self.is_trap_desactivate and self.is_mini_boss_room_open == False:
             self.find_door()
+        else:
+            print("There is nothing to do here")
 
     # Something to do for optimisation with this func (not deadend room)
     def find_door(self):
@@ -51,6 +53,7 @@ class TrapRoom(Room):
             print(f"{self.user.name} goes back at the main entrance ....")
             print("")
         if is_key:
+            self.is_mini_boss_room_open = True
             self.open_door()
 
     def open_door(self):
@@ -67,5 +70,3 @@ class TrapRoom(Room):
                 print(f"{self.user.name} decides to do nothing. He goes back at the main entrance....")
             else:
                 print("Choose an existing choice")
-
-

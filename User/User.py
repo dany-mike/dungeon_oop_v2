@@ -7,7 +7,7 @@ class User(Png):
         # User inventory
         self.inventory = {
             # Create a dynamic inventory later ex: I can choose my sword before the game etc:
-            "red_potion": 30,
+            "red_potion": 90,
             "sword_name": "Excalibur",
             "sword_attack": 30,
             'magic_attack': 50,
@@ -19,7 +19,8 @@ class User(Png):
     def attack(self, enemy):
         while True:
             print("")
-            attack_choice = input("What do you want to do ? 'sword_attack' 'magic_attack' (-10PV): "
+            attack_choice = input("What do you want to do ? 'sword_attack' (-30PV: Enemy) 'magic_attack'(-50 PV: "
+                                  "Enemy) (-10PV: User): "
                                   "")
             if attack_choice == 'sword_attack':
                 # Sword attack
@@ -53,4 +54,27 @@ class User(Png):
               f"{self.inventory['hylian_shield_pv']} PV !")
 
     def take_potion(self):
-        pass
+        # Check if the user has a potion or no.
+        is_potion = "red_potion" in self.inventory
+        if self.pv < 100 and is_potion:
+            while True:
+                is_use_potion = input(f"Do you want to use a potion to retrieve 90 PV ? 'y' 'n'")
+                print("")
+                if is_use_potion == 'y':
+                    print(f"{self.name} takes a red potion")
+                    self.pv += self.inventory["red_potion"]
+                    # Make my pv at 100 if its above
+                    if self.pv > 100:
+                        self.pv = 100
+                        print(f"{self.name} has {self.pv} PV")
+                    self.inventory.pop("red_potion")
+                    break
+                if is_use_potion == 'n':
+                    print(f"{self.name} does not use his potion...")
+                    print("")
+                    break
+                else:
+                    print("Choose an exist choice.")
+
+        if self.pv >= 100:
+            print(f"{self.name} continues in the dungeon ...")

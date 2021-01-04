@@ -26,8 +26,12 @@ while True:
             fight_room = FightRoom("Fight Room", user, "key")
             # Empty room instance
             empty_room = EmptyRoom("Empty Room", user)
+            # Execute the method v_main_entrance
             main_entrance.v_main_entrance()
             while True:
+                print(f"{user.name} has {user.pv} PV.")
+                user.take_potion()
+                # Execute the method choose_direction
                 direction = main_entrance.choose_direction()
                 print("")
                 if direction == 'FR':
