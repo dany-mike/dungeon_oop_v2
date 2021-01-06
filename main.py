@@ -29,6 +29,15 @@ while True:
             # Execute the method v_main_entrance
             main_entrance.v_main_entrance()
             while True:
+                is_exit_key = "ext_key" in user.inventory
+                if is_exit_key:
+                    print(f"{user.name} leave the dungeon with his {user.inventory['ext_key']} !")
+                    print(f"He got {user.inventory['gold']} during his journey !!!")
+                    print(f"Congratulation {user.name} you win the party !")
+                    print()
+                    print(f"SEE YOU LATER {user.name} !")
+                    break
+
                 print(f"{user.name} has {user.pv} PV.")
                 user.take_potion()
                 # Execute the method choose_direction

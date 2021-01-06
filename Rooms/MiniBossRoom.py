@@ -18,4 +18,4 @@ class MiniBossRoom(Room):
         # Call Fight instance
         fight = Fight()
         # execute start_fight and end_fight method in Fight.py
-        fight.start_fight(self.user, dark_user, self.is_dark_user, self.reward, "boss_key")
+        fight.start_fight(self.user, dark_user, self.is_dark_user, self.reward, "boss_key", '', '')

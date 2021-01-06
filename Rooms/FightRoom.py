@@ -18,5 +18,5 @@ class FightRoom(Room):
         # Call fight instance
         fight = Fight()
         # execute start_fight and end_fight method in Fight.py
-        fight.start_fight(self.user, goblin, self.is_gobelin, self.reward, "key")
+        fight.start_fight(self.user, goblin, self.is_gobelin, self.reward, "key", "", "")
         self.is_gobelin = False
