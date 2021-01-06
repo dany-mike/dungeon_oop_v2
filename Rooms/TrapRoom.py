@@ -1,6 +1,7 @@
 from Rooms.Room import Room
 from Rooms.MiniBossRoom import MiniBossRoom
 from Enemies.DarkUser import DarkUser
+from Png.Inventory import Inventory
 
 
 class TrapRoom(Room):
@@ -15,15 +16,17 @@ class TrapRoom(Room):
 
     def trap_attack(self):
         print(f'No! there is a trap!!! {self.user.name} is attacked by arrows')
+        inventory = Inventory(self.user)
         while True:
-            use_shield = input(f"Do you want to use your {self.user.inventory['hylian_shield_name']} ?: "
-                               f"'yes' 'no' ")
-            if use_shield == 'yes':
+            use_shield = inventory.can_check_inventory(f"Do you want to use your "
+                                                       f"{self.user.inventory['hylian_shield_name']}"
+                                                       f" ?: 'I' "f"'y' 'n' ")
+            if use_shield == 'y':
                 # Block the trap method
                 self.user.block_trap_with_shield(self.arrow_attack)
                 break
 
-            if use_shield == 'no':
+            if use_shield == 'n':
                 # arrow_attack without shield
                 self.user.pv -= self.arrow_attack
                 print(f"{self.user.name} looses {self.arrow_attack} PV !")
@@ -57,8 +60,10 @@ class TrapRoom(Room):
             self.open_door()
 
     def open_door(self):
+        inventory = Inventory(self.user)
+
         while True:
-            use_key = input("Do you want to use your key ? 'y' 'n' ")
+            use_key = inventory.can_check_inventory("Do you want to use your key ? 'I' 'y' 'n' ")
 
             if use_key == 'y':
                 # Create an enemy wich is in the same state of my user

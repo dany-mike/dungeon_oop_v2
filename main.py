@@ -20,12 +20,13 @@ while True:
                 user = User(character_name, 100)
                 inventory = Inventory(user)
                 break
-        print("")
         is_enter = inventory.can_check_inventory("Do you want to enter in the dungeon ? 'I': : 'y' 'n' ")
+        print("")
 
         if is_enter == 'y':
             # Blocked in the dungeon
             print("YOU ENTER AND THE DOOR BEHIND YOU IS LOCKED ! YOU CANT LEAVE THE DUNGEON !!!")
+            print("")
             # Call main entrance instance
             main_entrance = MainEntrance("Main entrance", "dungeon map", user)
             # Call TrapRoom instance

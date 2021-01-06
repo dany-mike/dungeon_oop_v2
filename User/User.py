@@ -60,7 +60,7 @@ class User(Png):
         is_potion = "red_potion" in self.inventory
         if self.pv < 100 and is_potion:
             while True:
-                is_use_potion = input(f"Do you want to use a potion to retrieve 90 PV ? 'y' 'n'")
+                is_use_potion = input(f"Do you want to use a potion to retrieve 90 PV ? 'I' 'y' 'n'")
                 print("")
                 if is_use_potion == 'y':
                     print(f"{self.name} takes a red potion")
@@ -75,6 +75,8 @@ class User(Png):
                     print(f"{self.name} does not use his potion...")
                     print("")
                     break
+                if is_use_potion == 'I':
+                    self.print_inventory()
                 else:
                     print("Choose an exist choice.")
 
