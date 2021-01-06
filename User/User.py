@@ -1,4 +1,7 @@
 from Png.Png import Png
+import colorama
+from colorama import Fore
+colorama.init()
 
 
 class User(Png):
@@ -85,5 +88,5 @@ class User(Png):
 
     def print_inventory(self):
         print('')
-        print("\033[1m" + str(self.inventory) + "\033[0m")
+        print(Fore.BLUE + "\033[1m" + str(self.inventory) + "\033[0m")
         print('')

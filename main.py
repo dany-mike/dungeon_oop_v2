@@ -49,9 +49,10 @@ while True:
                     print(f"SEE YOU LATER {user.name} !")
                     break
 
+                print("")
                 print(f"{user.name} has {user.pv} PV.")
-                user.take_potion()
                 # Execute the method choose_direction
+                print("")
                 direction = main_entrance.choose_direction()
                 print("")
                 if direction == 'FR':
