@@ -1,4 +1,5 @@
 from Rooms.Room import Room
+from Png.Inventory import Inventory
 
 
 class MainEntrance(Room):
@@ -26,5 +27,8 @@ class MainEntrance(Room):
         print(f"You are at the {self.room_name}.")
 
     def choose_direction(self):
+        inventory = Inventory(self.user)
         # Propose to take a potion if user has less than 100 PV
-        return input(f"In which room you want to go ?: '{self.straight_dir}' '{self.left_dir}' '{self.right_dir}': ")
+        return inventory.can_check_inventory_room_direction(f"In which room you want to go ?: 'I' "
+                                                            f"'{self.straight_dir}' '{self.left_dir}' "
+                                                            f"'{self.right_dir}': ")

@@ -20,7 +20,7 @@ class User(Png):
         while True:
             print("")
             attack_choice = input("What do you want to do ? 'sword_attack' (-30PV: Enemy) 'magic_attack'(-50 PV: "
-                                  "Enemy) (-10PV: User): "
+                                  "Enemy) (-10PV: User) 'I': "
                                   "")
             if attack_choice == 'sword_attack':
                 # Sword attack
@@ -38,6 +38,8 @@ class User(Png):
                 print(f"But {self.name} looses 10 PV")
                 break
             # Add a protection attack
+            if attack_choice == 'I':
+                self.print_inventory()
             else:
                 print("Choose an existing choice.")
 
@@ -78,3 +80,8 @@ class User(Png):
 
         if self.pv >= 100:
             print(f"{self.name} continues in the dungeon ...")
+
+    def print_inventory(self):
+        print('')
+        print("\033[1m" + str(self.inventory) + "\033[0m")
+        print('')

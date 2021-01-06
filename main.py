@@ -1,23 +1,31 @@
-from User.User import User
+from Enemies.Goblin import Goblin
+from Rooms.EmptyRoom import EmptyRoom
+from Rooms.FightRoom import FightRoom
 from Rooms.MainEntrance import MainEntrance
 from Rooms.TrapRoom import TrapRoom
-from Rooms.FightRoom import FightRoom
-from Rooms.EmptyRoom import EmptyRoom
-from Enemies.Goblin import Goblin
+from User.User import User
+from Png.Inventory import Inventory
 
 
 while True:
     def main():
         print("Welcome in the dungeon game !")
         # Choose username
-        character_name = input("Choose a character name: ")
+        while True:
+            character_name = input("Choose a character name: ")
+            if character_name == "":
+                print("You have to choose a name")
+            else:
+                print('')
+                user = User(character_name, 100)
+                inventory = Inventory(user)
+                break
         print("")
-        is_enter = input("Do you want to enter in the dungeon ?: 'y' 'n' ")
+        is_enter = inventory.can_check_inventory("Do you want to enter in the dungeon ? 'I': : 'y' 'n' ")
+
         if is_enter == 'y':
             # Blocked in the dungeon
             print("YOU ENTER AND THE DOOR BEHIND YOU IS LOCKED ! YOU CANT LEAVE THE DUNGEON !!!")
-            # Call user instance
-            user = User(character_name, 100)
             # Call main entrance instance
             main_entrance = MainEntrance("Main entrance", "dungeon map", user)
             # Call TrapRoom instance
@@ -28,6 +36,8 @@ while True:
             empty_room = EmptyRoom("Empty Room", user)
             # Execute the method v_main_entrance
             main_entrance.v_main_entrance()
+
+            # Possibility to win the game
             while True:
                 is_exit_key = "ext_key" in user.inventory
                 if is_exit_key:
