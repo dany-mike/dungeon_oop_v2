@@ -8,7 +8,7 @@ class User(Png):
     def __init__(self, name, pv):
         Png.__init__(self, name, pv)
         # User inventory
-        self.potion_number = 2
+        self.potion_number = 1
         self.inventory = {
             # Create a dynamic inventory later ex: I can choose my sword before the game etc:
             "red_potion": 90,
@@ -42,7 +42,13 @@ class User(Png):
                 self.pv -= 10
                 print(f"But {self.name} looses 10 PV")
                 break
-            # Add a protection attack
+
+            if attack_choice == 'red_potion':
+                if self.potion_number > 0:
+                    self.potion_number -= 1
+                    self.take_potion()
+                break
+
             if attack_choice == 'I':
                 self.print_inventory()
             else:
@@ -65,6 +71,7 @@ class User(Png):
         # Check if the user has a potion or no.
         is_potion = "red_potion" in self.inventory
         if self.pv < 100 and is_potion:
+
             while True:
                 is_use_potion = input(f"Do you want to use a potion (90PV) ? 'y' 'n'")
                 print("")
@@ -76,6 +83,7 @@ class User(Png):
                         self.pv = 100
                         print(f"{self.name} has {self.pv} PV")
                     self.inventory.pop("red_potion")
+                    self.inventory.pop("red_potion_name")
                     break
                 if is_use_potion == 'n':
                     print(f"{self.name} does not use his potion...")
@@ -85,9 +93,6 @@ class User(Png):
                     self.print_inventory()
                 else:
                     print("Choose an exist choice.")
-
-        if self.pv == 100:
-            print(f"{self.name} has {self.pv} PV !")
 
     def print_inventory(self):
         print('')

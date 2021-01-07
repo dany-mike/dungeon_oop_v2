@@ -1,15 +1,32 @@
+import sys
+import time
+
 from Enemies.Goblin import Goblin
+from Png.Inventory import Inventory
 from Rooms.EmptyRoom import EmptyRoom
 from Rooms.FightRoom import FightRoom
 from Rooms.MainEntrance import MainEntrance
 from Rooms.TrapRoom import TrapRoom
 from User.User import User
-from Png.Inventory import Inventory
+
+
+def typewriter(welcome_message):
+    for char in welcome_message:
+        sys.stdout.write(char)
+        sys.stdout.flush()
+        time.sleep(0.01)
+
+
+message = "- Welcome in the dungeon game \n\
+ - Type 'I' to open your inventory- \n\
+  If you want to select an object type the object_name"
 
 
 while True:
     def main():
-        print("Welcome in the dungeon game !")
+        typewriter(message)
+        print("")
+        print("")
         # Choose username
         while True:
             character_name = input("Choose a character name: ")
@@ -74,6 +91,7 @@ while True:
                         break
         else:
             print("Game over")
+
 
     if __name__ == '__main__':
         main()

@@ -9,11 +9,19 @@ class Fight:
             print(f"A fight between {user.name} and {enemy.name} started !")
             print("")
             while True:
-                user_number = int(input("Choose a number '1' or '2': "))
-                print("")
-                if 1 <= user_number <= 2:
+                user_number = input("Choose a number '1' or '2': ")
+                try:
+                    user_nbr_str = int(user_number)
+                except ValueError:
                     print("")
-                    print(f"You choose {user_number}")
+                    print("Choose 1 or 2")
+                    print("")
+                    continue
+
+                print("")
+                if 1 <= user_nbr_str <= 2:
+                    print("")
+                    print(f"You choose {str(user_nbr_str)}")
                     break
                 else:
                     print("")
@@ -34,6 +42,7 @@ class Fight:
                         break
                     if user.pv <= 0:
                         self.lose_fight(user.name)
+                        break
                     # Enemy attacks User
                     enemy.attack(user)
                     # If Enemy has 0 or less end (Do the same for user later)
@@ -53,6 +62,7 @@ class Fight:
                         break
                     if user.pv <= 0:
                         self.lose_fight(user.name)
+                        break
                     # User attacks Enemy
                     user.attack(enemy)
                     # If Enemy has 0 or less end (Do the same for user later)
