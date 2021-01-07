@@ -22,7 +22,7 @@ class MainEntrance(Room):
         self.main_entrance_reward()
         # Make reward into my inventory
         self.user.inventory["map"] = self.reward
-        print(f"{self.user.inventory['map']} added in your inventary !")
+        print(f"{self.user.inventory['map']} added in your inventory !")
         print("")
         print(f"You are at the {self.room_name}.")
 

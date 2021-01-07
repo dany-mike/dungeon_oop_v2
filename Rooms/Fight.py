@@ -1,3 +1,6 @@
+import random
+
+
 class Fight:
 
     def start_fight(self, user, enemy, is_enemy, reward, reward_key_value, second_reward, second_reward_key_value):
@@ -5,21 +8,58 @@ class Fight:
             print("")
             print(f"A fight between {user.name} and {enemy.name} started !")
             print("")
-            # Fight loops
             while True:
-                print(f"{enemy.name} has {enemy.pv} You have {user.pv} PV !")
-                # User attacks Goblin
-                user.attack(enemy)
-                # If Goblin has 0 or less end (Do the same for user later)
-                if enemy.pv <= 0:
-                    self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
+                user_number = int(input("Choose a number '1' or '2': "))
+                print("")
+                if 1 <= user_number <= 2:
+                    print("")
+                    print(f"You choose {user_number}")
                     break
-                # Goblin attacks User
-                enemy.attack(user)
-                # If Goblin has 0 or less end (Do the same for user later)
-                if enemy.pv <= 0:
-                    self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
-                    break
+                else:
+                    print("")
+
+            number_to_find = random.randrange(1, 3)
+            print(f"The right number was {number_to_find} !")
+            print("")
+            if user_number == number_to_find:
+                print(f"{user.name} has the first attack !")
+                # Fight loops
+                while True:
+                    print(f"{enemy.name} has {enemy.pv} You have {user.pv} PV !")
+                    # User attacks Enemy
+                    user.attack(enemy)
+                    # If Enemy has 0 or less end (Do the same for user later)
+                    if enemy.pv <= 0:
+                        self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
+                        break
+                    if user.pv <= 0:
+                        self.lose_fight(user.name)
+                    # Enemy attacks User
+                    enemy.attack(user)
+                    # If Enemy has 0 or less end (Do the same for user later)
+                    if enemy.pv <= 0:
+                        self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
+                        break
+            else:
+                print(f'{enemy.name} has the first attack !')
+                # Fight loops
+                while True:
+                    print(f"{enemy.name} has {enemy.pv} You have {user.pv} PV !")
+                    # Enemy attacks User
+                    enemy.attack(user)
+                    # If Enemy has 0 or less end (Do the same for user later)
+                    if enemy.pv <= 0:
+                        self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
+                        break
+                    if user.pv <= 0:
+                        self.lose_fight(user.name)
+                    # User attacks Enemy
+                    user.attack(enemy)
+                    # If Enemy has 0 or less end (Do the same for user later)
+                    if enemy.pv <= 0:
+                        self.end_fight(reward, user, reward_key_value, second_reward, second_reward_key_value)
+                        break
+
         else:
             print("There is nothing to do in this room...")
 
@@ -37,3 +77,9 @@ class Fight:
             user.inventory[second_reward_key_value] = second_reward
             print(f"There is also a {second_reward} in the treasure chest !")
             print("")
+
+    @staticmethod
+    def lose_fight(username):
+        print("")
+        print(f"{username} loose the fight :( ")
+        print("you lose all your inventory :( ")

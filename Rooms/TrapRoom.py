@@ -29,22 +29,28 @@ class TrapRoom(Room):
             if use_shield == 'n':
                 # arrow_attack without shield
                 self.user.pv -= self.arrow_attack
+                print("")
                 print(f"{self.user.name} looses {self.arrow_attack} PV !")
+                print("")
                 break
             else:
                 print("Choose an existing choice")
             # Deactivate trap
-        print("Seems the trap is deactivate...")
+        print("The trap is deactivate...")
         self.is_trap_desactivate = True
 
     def v_trap_room(self):
         print(f"{self.user.name} enters in the {self.room_name}")
         if not self.is_trap_desactivate:
             self.trap_attack()
-        if self.is_trap_desactivate and self.is_mini_boss_room_open == False:
-            self.find_door()
-        else:
-            print("There is nothing to do here")
+            if self.user.pv == 0:
+                print("Arrows killed you !")
+
+        if self.user.pv > 0:
+            if self.is_trap_desactivate and self.is_mini_boss_room_open == False:
+                self.find_door()
+            else:
+                print("There is nothing to do here")
 
     # Something to do for optimisation with this func (not deadend room)
     def find_door(self):
@@ -75,3 +81,9 @@ class TrapRoom(Room):
                 print(f"{self.user.name} decides to do nothing. He goes back at the main entrance....")
             else:
                 print("Choose an existing choice")
+
+    @staticmethod
+    def lose_fight(user):
+        print("")
+        print(f"{user.name} looe the fight :( ")
+        print("you lose all your inventory :( ")

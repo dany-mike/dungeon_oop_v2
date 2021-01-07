@@ -57,6 +57,7 @@ class User(Png):
         print("")
         print(f"{self.inventory['hylian_shield_name']} has "
               f"{self.inventory['hylian_shield_pv']} PV !")
+        print(f"{self.name} has {self.pv} PV !")
 
     def take_potion(self):
         # Check if the user has a potion or no.
