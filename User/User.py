@@ -8,9 +8,11 @@ class User(Png):
     def __init__(self, name, pv):
         Png.__init__(self, name, pv)
         # User inventory
+        self.potion_number = 2
         self.inventory = {
             # Create a dynamic inventory later ex: I can choose my sword before the game etc:
             "red_potion": 90,
+            "red_potion_name": "red potion",
             "sword_name": "Excalibur",
             "sword_attack": 30,
             'magic_attack': 50,
@@ -64,7 +66,7 @@ class User(Png):
         is_potion = "red_potion" in self.inventory
         if self.pv < 100 and is_potion:
             while True:
-                is_use_potion = input(f"Do you want to use a potion to retrieve 90 PV ? 'I' 'y' 'n'")
+                is_use_potion = input(f"Do you want to use a potion (90PV) ? 'y' 'n'")
                 print("")
                 if is_use_potion == 'y':
                     print(f"{self.name} takes a red potion")
@@ -84,8 +86,8 @@ class User(Png):
                 else:
                     print("Choose an exist choice.")
 
-        if self.pv >= 100:
-            print(f"{self.name} continues in the dungeon ...")
+        if self.pv == 100:
+            print(f"{self.name} has {self.pv} PV !")
 
     def print_inventory(self):
         print('')
