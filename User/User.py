@@ -31,7 +31,7 @@ class User(Png):
                                   "Enemy) (-10PV: User) 'I': "
                                   "")
             if attack_choice == 'sword_attack':
-                sword_attack = 30,
+                sword_attack = 30
                 # Sword attack
                 print("")
                 print(f"{self.name} uses the Sword Attack !")

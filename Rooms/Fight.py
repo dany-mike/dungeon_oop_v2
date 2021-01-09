@@ -17,7 +17,6 @@ class Fight:
                     print("Choose 1 or 2")
                     print("")
                     continue
-
                 print("")
                 if 1 <= user_nbr_int <= 2:
                     print("")
