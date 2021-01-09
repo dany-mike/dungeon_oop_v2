@@ -35,15 +35,17 @@ class User(Png):
                 # Sword attack
                 print("")
                 print(f"{self.name} uses the Sword Attack !")
-                enemy.pv -= sword_attack
-                print(f"{enemy.name} looses {sword_attack} PV !")
+                domage = self.calcul_domage(enemy.weakness, sword_attack)
+                enemy.pv -= domage
+                print(f"{enemy.name} looses {domage} PV !")
                 break
             if attack_choice == 'magic_attack':
                 magic_attack = 50
                 # Magic attack
                 print(f"{self.name} uses the Magic Attack !")
-                enemy.pv -= magic_attack
-                print(f"{enemy.name} loose {magic_attack} PV !")
+                domage = self.calcul_domage(enemy.weakness, magic_attack)
+                enemy.pv -= domage
+                print(f"{enemy.name} loose {domage} PV !")
                 self.pv -= 10
                 print(f"But {self.name} looses 10 PV")
                 break
@@ -105,3 +107,12 @@ class User(Png):
         print(Fore.RED + "\033[1m" + "Equipped sword: " + str(self.active_sword) + "\033[0m")
         print("\033[1m" + "Equipped shield: " + str(self.inventory["hylian_shield_name"]) + "\033[0m")
         print('')
+
+    def calcul_domage(self, weakness, attack):
+        if self.active_sword == weakness:
+            print('')
+            print("The attack is super efficient !")
+            print('')
+            return attack * 2
+        else:
+            return attack

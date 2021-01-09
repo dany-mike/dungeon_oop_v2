@@ -51,7 +51,6 @@ class Fight:
                     print(f"{enemy.name} has {enemy.pv} You have {user.pv} PV !")
                     # Enemy attacks User
                     enemy.attack(user)
-                    print(enemy.pv)
                     # If Enemy has 0 or less end (Do the same for user later)
                     if user.pv <= 0:
                         self.lose_fight(user.name)
