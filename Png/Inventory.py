@@ -9,6 +9,7 @@ class Inventory:
             is_check = input(print_text)
             if is_check == 'I':
                 self.user.print_inventory()
+            self.change_sword(is_check)
             if is_check == "y":
                 return "y"
             if is_check == 'n':
@@ -29,6 +30,7 @@ class Inventory:
             is_check = input(print_text)
             if is_check == 'I':
                 self.user.print_inventory()
+            self.change_sword(is_check)
             if is_check == "FR":
                 return "FR"
             if is_check == 'TR':
@@ -44,3 +46,13 @@ class Inventory:
                 print("You dont have potion")
                 print("")
 
+    def change_sword(self, input_text):
+        if input_text == "excalibur":
+            self.user.active_sword = "Excalibur"
+            print("Excalibur equipped !")
+        if input_text == "royal_sword":
+            self.user.active_sword = "Royal Sword"
+            print("Royal Sword equipped !")
+        if input_text == "fire_sword":
+            self.user.active_sword = "Fire Sword"
+            print("Fire sword equipped !")

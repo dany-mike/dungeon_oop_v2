@@ -9,14 +9,17 @@ class User(Png):
         Png.__init__(self, name, pv)
         # User inventory
         self.potion_number = 1
+        self.active_sword = "Excalibur"
         self.inventory = {
             # Create a dynamic inventory later ex: I can choose my sword before the game etc:
             "red_potion": 90,
             "red_potion_name": "red potion",
-            "sword_name": "Excalibur",
-            "sword_attack": 30,
-            'magic_attack': 50,
-            # if the shield is attacked by 100 he looses 50 pv
+            # Résistance à excalibur mon dark user attack / 2
+            "excalibur": "Excalibur",
+            # Faiblesse du dragon
+            "royal_sword": "Royal Sword",
+            # Faiblesse du goblin
+            "fire_sword": "Fire Sword",
             "hylian_shield_name": "Hylian Shield",
             "hylian_shield_pv": 100,
         }
@@ -28,17 +31,19 @@ class User(Png):
                                   "Enemy) (-10PV: User) 'I': "
                                   "")
             if attack_choice == 'sword_attack':
+                sword_attack = 30,
                 # Sword attack
                 print("")
                 print(f"{self.name} uses the Sword Attack !")
-                enemy.pv -= self.inventory['sword_attack']
-                print(f"{enemy.name} looses {self.inventory['sword_attack']} PV !")
+                enemy.pv -= sword_attack
+                print(f"{enemy.name} looses {sword_attack} PV !")
                 break
             if attack_choice == 'magic_attack':
+                magic_attack = 50
                 # Magic attack
                 print(f"{self.name} uses the Magic Attack !")
-                enemy.pv -= self.inventory['magic_attack']
-                print(f"{enemy.name} loose {self.inventory['magic_attack']} PV !")
+                enemy.pv -= magic_attack
+                print(f"{enemy.name} loose {magic_attack} PV !")
                 self.pv -= 10
                 print(f"But {self.name} looses 10 PV")
                 break
@@ -97,4 +102,6 @@ class User(Png):
     def print_inventory(self):
         print('')
         print(Fore.BLUE + "\033[1m" + str(self.inventory) + "\033[0m")
+        print(Fore.RED + "\033[1m" + "Equipped sword: " + str(self.active_sword) + "\033[0m")
+        print("\033[1m" + "Equipped shield: " + str(self.inventory["hylian_shield_name"]) + "\033[0m")
         print('')

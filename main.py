@@ -17,9 +17,11 @@ def typewriter(welcome_message):
         time.sleep(0.01)
 
 
-message = "- Welcome in the dungeon game \n\
- - Type 'I' to open your inventory- \n\
-  If you want to select an object type the object_name"
+message = \
+ "- Welcome in the dungeon game \n\
+ Type 'I' to open your inventory- \n\
+ If you want to select an object or an other sword type the object_name \n\
+ Good luck !"
 
 
 while True:
