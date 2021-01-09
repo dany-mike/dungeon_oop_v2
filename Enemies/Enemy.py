@@ -2,10 +2,11 @@ from Png.Png import Png
 
 
 class Enemy(Png):
-    def __init__(self, name, pv, attack_name, attack_domage):
+    def __init__(self, name, pv, attack_name, attack_domage, weakness):
         Png.__init__(self, name, pv)
         self.attack_name = attack_name
         self.attack_domage = attack_domage
+        self.weakness = weakness
 
     def attack(self, user):
         print("")
