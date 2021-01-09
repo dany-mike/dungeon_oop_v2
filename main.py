@@ -17,12 +17,32 @@ def typewriter(welcome_message):
         time.sleep(0.01)
 
 
+def game_over():
+    return print(
+        """
+     _____      ___       ___  ___   _______
+    /  ___|    /   |     /   |/   | |   ____| 
+    | |       /    |    / /|   /| | |  |__
+    | |  _   /  /| |   / / |__/ | | |   __|
+    | |_| | /  ___ |  / /       | | |  |____
+    \_____//_/   |_| /_/        |_| |_______|
+
+     _____    _     _   ______   ______
+    /  _  \  | |   / / | _____| |  _   
+    | | | |  | |  / /  | |__    | |_|  |
+    | | | |  | | / /   |  __|   |  _   /
+    | |_| |  | |/ /    | |____  | | \  
+    \_____/  |___/     |______| |_|  \__
+
+    """
+    )
+
+
 message = \
- "- Welcome in the dungeon game \n\
+    "- Welcome in the dungeon game \n\
  Type 'I' to open your inventory- \n\
  If you want to select an object or an other sword type the object_name \n\
  Good luck !"
-
 
 while True:
     def main():
@@ -77,23 +97,22 @@ while True:
                 if direction == 'FR':
                     fight_room.v_fight_room(Goblin("Goblin", 50))
                     if user.pv <= 0:
-                        print("Game over")
+                        game_over()
                         break
                 if direction == 'EM':
                     # Empty Room Instance
                     empty_room.v_empty_room()
                     if user.pv <= 0:
-                        print("Game over")
+                        game_over()
                         break
                 if direction == "TR":
                     # Trap Room instance
                     trap_room.v_trap_room()
                     if user.pv <= 0:
-                        print("Game over")
+                        game_over()
                         break
         else:
-            print("Game over")
-
+            game_over()
 
     if __name__ == '__main__':
         main()
@@ -104,3 +123,5 @@ while True:
     else:
         print("Bye bye see you soon!")
         break
+
+
