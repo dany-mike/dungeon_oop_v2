@@ -4,33 +4,31 @@ from Rooms.FightRoom import FightRoom
 from Rooms.MainEntrance import MainEntrance
 from Rooms.TrapRoom import TrapRoom
 from User.User import User
-from tools import typewriter, message, user_choose_name, in_dungeon
+from tools import typewriter, message, user_choose_name, in_dungeon, jump_line
 
 
 while True:
     def main():
         typewriter(message)
         print("")
-        print("")
         # Choose username
         character_name = user_choose_name()
-        print('')
         user = User(character_name, 100)
         inventory = Inventory(user)
         is_enter = inventory.can_check_inventory("Do you want to enter in the dungeon ? 'I': : 'y' 'n' ")
         print("")
         if is_enter == 'y':
             # Blocked in the dungeon
-            print("YOU ENTER AND THE DOOR BEHIND YOU IS LOCKED ! YOU CANT LEAVE THE DUNGEON !!!")
+            typewriter("YOU ENTER AND THE DOOR BEHIND YOU IS LOCKED ! YOU CANT LEAVE THE DUNGEON !!!")
             print("")
             # Call main entrance instance
-            main_entrance = MainEntrance("Main entrance", "dungeon map", user)
+            main_entrance = MainEntrance("Main entrance", "dungeon map", user, typewriter)
             # Call TrapRoom instance
-            trap_room = TrapRoom("Trap Room", user)
+            trap_room = TrapRoom("Trap Room", user, typewriter)
             # Fight Room instance
-            fight_room = FightRoom("Fight Room", user, "key")
+            fight_room = FightRoom("Fight Room", user, "key", typewriter)
             # Empty room instance
-            empty_room = EmptyRoom("Empty Room", user)
+            empty_room = EmptyRoom("Empty Room", user, typewriter)
             # Execute the method v_main_entrance
             main_entrance.v_main_entrance()
             # User in dungeon

@@ -5,15 +5,18 @@ from Png.Inventory import Inventory
 
 
 class EmptyRoom(Room):
-    def __init__(self, room_name, user):
-        super().__init__(room_name)
+    def __init__(self, room_name, user, typewriter):
+        super().__init__(room_name, typewriter)
         self.user = user
 
     def v_empty_room(self):
+        # Check if I have the boss key
         is_boss_key = "boss_key" in self.user.inventory
         inventory = Inventory(self.user)
-        print(f"{self.user.name} enters in the {self.room_name}")
-        print("There is a close door in the room")
+        self.typewriter(f"{self.user.name} enters in the {self.room_name}")
+        input("")
+        print("")
+        self.typewriter("There is a close door in the room")
         print("")
         if is_boss_key:
             while True:
@@ -32,6 +35,6 @@ class EmptyRoom(Room):
     def open_door(self):
         print(f"{self.user.name} uses {self.user.inventory['key']}")
         print(f"{self.user.name} opens the door")
-        boss_room = BossRoom('Boss Room', self.user, '1 000 000 gold coin')
+        boss_room = BossRoom('Boss Room', self.user, '1 000 000 gold coin', self.typewriter)
         boss_room.v_boss_room(FireDragon(f"Fire Dragon", 100))
 

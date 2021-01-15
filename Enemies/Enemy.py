@@ -14,3 +14,4 @@ class Enemy(Png):
         user.pv -= self.attack_domage
         print(f"{user.name} looses {self.attack_domage} PV !")
         print("")
+        print(f"You have {user.pv}")

@@ -12,7 +12,7 @@ def execute_room_instance(user):
     print("YOU ENTER AND THE DOOR BEHIND YOU IS LOCKED ! YOU CANT LEAVE THE DUNGEON !!!")
     print("")
     # Call main entrance instance
-    main_entrance = MainEntrance("Main entrance", "dungeon map", user)
+    main_entrance = MainEntrance("Main entrance", "dungeon map", user, typewriter)
     # Call TrapRoom instance
     trap_room = TrapRoom("Trap Room", user)
     # Fight Room instance
@@ -23,11 +23,12 @@ def execute_room_instance(user):
     main_entrance.v_main_entrance()
 
 
-def typewriter(welcome_message):
-    for char in welcome_message:
+def typewriter(text):
+    for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(0.01)
+    print("")
 
 
 def game_over():
@@ -46,16 +47,16 @@ def game_over():
     | | | |  | | / /   |  __|   |  _   /
     | |_| |  | |/ /    | |____  | | \  
     \_____/  |___/     |______| |_|  \__
-
     """
     )
 
 
 message = \
     "- Welcome in the dungeon game \n\
- Type 'I' to open your inventory- \n\
- If you want to select an object or an other sword type the object_name \n\
- Good luck !"
+     - Type 'I' to open your inventory \n\
+     - Type enter to continue in the dungeon \n\
+     - If you want to select an object or an other sword type the object_name \n\
+     - Good luck !"
 
 
 def user_choose_name():
@@ -102,3 +103,8 @@ def in_dungeon(user, main_entrance, fight_room, empty_room, trap_room):
             if user.pv <= 0:
                 game_over()
                 break
+
+
+def jump_line():
+    print("")
+    print("")

@@ -5,8 +5,8 @@ from Png.Inventory import Inventory
 
 
 class TrapRoom(Room):
-    def __init__(self, room_name, user):
-        super().__init__(room_name)
+    def __init__(self, room_name, user, typewriter):
+        super().__init__(room_name, typewriter)
         self.is_mini_boss_room_open = False
         self.is_trap_desactivate = False
         self.user = user
@@ -40,7 +40,8 @@ class TrapRoom(Room):
         self.is_trap_desactivate = True
 
     def v_trap_room(self):
-        print(f"{self.user.name} enters in the {self.room_name}")
+        self.typewriter(f"{self.user.name} enters in the {self.room_name}")
+        input("")
         if not self.is_trap_desactivate:
             self.trap_attack()
             if self.user.pv == 0:
@@ -74,7 +75,8 @@ class TrapRoom(Room):
             if use_key == 'y':
                 # Create an enemy wich is in the same state of my user
                 print(f"{self.user.name} uses {self.user.inventory['key']}")
-                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, 'boss key', self.is_dark_user)
+                mini_boss_room = MiniBossRoom('Mini Boss Room', self.user, 'boss key', self.is_dark_user,
+                                              self.typewriter)
                 mini_boss_room.v_mini_boss_room(DarkUser(f"Dark {self.user.name}", self.user.pv))
                 break
             if use_key == 'n':
